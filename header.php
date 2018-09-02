@@ -12,6 +12,7 @@
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
 <head>
+	<meta name="google-site-verification" content="brV_f0L24oU2SKjeJrKN4kvwWgznUEdUpCWM8WLMQ1M" />
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
@@ -97,4 +98,3 @@
 		</header><!-- .site-header -->
 
 		<div id="content" class="site-content">
-
