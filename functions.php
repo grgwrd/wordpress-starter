@@ -9,10 +9,24 @@ function my_theme_enqueue_styles() {
         array( $parent_style ),
         wp_get_theme()->get('Version')
     );
+
 }
 add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
 
+function contactFormAirtable (){
 
+  $firstName = $_POST['firstName'];
+
+  $results = array("status"=>"success", "firstName"=>$firstName);
+
+  echo json_encode($results);
+
+  die();
+
+}
+
+add_action('wp_ajax_contact_form_airtable', 'contactFormAirtable');
+add_action('wp_ajax_nopriv_contact_form_airtable', 'contactFormAirtable');
 
 function sendContactFormToSiteAdmin () {
   try {
