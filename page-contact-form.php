@@ -121,7 +121,7 @@ get_header(); ?>
 					<option value="WI">Wisconsin</option>
 					<option value="WY">Wyoming</option>
 				</select>
-			</br>
+			<br>
 				<label>Zip Code:</label>
 				<input type="zip" name="zip" placeholder="Your zip code" />
 				<label>Comments:</label>

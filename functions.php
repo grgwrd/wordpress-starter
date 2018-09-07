@@ -65,31 +65,31 @@ function contactFormAirtable (){
       $subject = "Airtable Record Created Contact Form";
       $message = "A record has been created in the Contact Form Submits Tables for Airtable";
 
-      if (wp_mail($send_to, $subject, $message, $headers)) {
-        echo json_encode(array('status' => 'success', 'message' => 'Contact message sent.'));
-        exit;
-      } else {
-        throw new Exception('Failed to send email.');
-      }
+      try {
+        if (wp_mail($send_to, $subject, $message, $headers)) {
+          echo json_encode(array('status' => 'success', 'message' => 'Contact message sent.'));
+          exit;
+        } else {
+          throw new Exception('Failed to send email.');
+        }
       } catch (Exception $e) {
         echo json_encode(array('status' => 'error', 'message' => $e->getMessage()));
         exit;
       }
-    }
 
-    $results = array("status"=>"success", "contactFormId"=>$contact_form_id);
+      $results = array("status"=>"success", "contactFormId"=>$contact_form_id);
 
-    $results = array("status"=>"success", "firstName"=>$firstName);
+      $results = array("status"=>"success", "firstName"=>$firstName);
 
-    echo json_encode($results);
+      //return results from post
+      echo json_encode($results);
+    } // end if record
 
-  }
+  } // end if post
 
-  die();
+  die(); //exit post
 
-}
+} // end contactFormAirtable
 
 add_action('wp_ajax_contact_form_airtable', 'contactFormAirtable');
 add_action('wp_ajax_nopriv_contact_form_airtable', 'contactFormAirtable');
-
-?>
