@@ -30,7 +30,6 @@ get_header(); ?>
 			// End of the loop.
 		endwhile;
 
-
 		//record_id for Airtable record from Contact Form Submission
 	  $airtableRecordId = $_GET['record_id'];
 

@@ -140,11 +140,6 @@ get_header(); ?>
 
 <?php get_sidebar(); ?>
 <?php
-// embed the javascript file that makes the AJAX request
-wp_enqueue_script( 'contact_form_airtable','/wp-content/themes/custom/twentysixteen-child/js/contact-form.js', array( 'jquery' ) );
-
-// declare the URL to the file that handles the AJAX request (wp-admin/admin-ajax.php)
-wp_localize_script( 'contact_form_airtable', 'ContactFormAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 
 get_footer();
 

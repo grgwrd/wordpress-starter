@@ -6,7 +6,7 @@ jQuery(document).ready(function ($) {
       if (!validateInputs()) {
         return false;
       }
-
+      
       e.preventDefault();
 
       var $this = $(this);
@@ -35,7 +35,7 @@ jQuery(document).ready(function ($) {
         data: JSON.parse(jsonObj),
         success: function (data) {
           if (data.status === 'success') {
-            window.location.href = "/thank-you-submit?record_id="+data.record_id;
+            window.location.href = "/thank-you-submit/?record_id="+data.record_id;
           } else {
             alert("error");
             handleFormError();
