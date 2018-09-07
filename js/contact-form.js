@@ -6,7 +6,7 @@ jQuery(document).ready(function ($) {
       if (!validateInputs()) {
         return false;
       }
-      
+
       e.preventDefault();
 
       var $this = $(this);
@@ -53,7 +53,7 @@ jQuery(document).ready(function ($) {
       var firstName = $('#contact-form > input[name="firstName"]'),
           lastName = $('#contact-form > input[name="lastName"]'),
           email = $('#contact-form > input[name="email"]'),
-          phoneNumber = $('#contact-form > input[name="tel"]');
+          phoneNumber = $('#contact-form > input[name="tel"]'),
           zipcode = $('#contact-form > input[name="zip"]');
 
           $message = $('#contact-form > textarea').val();
