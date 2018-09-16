@@ -5,6 +5,7 @@
 /web/wp-includes/*
 
 /web/wp-content/themes/twentyfifteen
+/web/wp-content/themes/twentysixteen
 /web/wp-content/themes/twentyseventeen
 
 /web/*.php
@@ -14,4 +15,3 @@
 
 
 *.DS_Store
-
