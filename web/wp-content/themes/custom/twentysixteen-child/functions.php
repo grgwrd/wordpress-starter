@@ -22,9 +22,10 @@ wp_localize_script( 'contact_form_airtable', 'ContactFormAjax', array( 'ajaxurl'
 add_action('wp_ajax_contact_form_airtable', 'contactFormAirtable');
 add_action('wp_ajax_nopriv_contact_form_airtable', 'contactFormAirtable');
 
-//Contact Form submit post. Creates Airtable record and send email
+//Contact Form submit post. Creates Airtable record
 function contactFormAirtable (){
 
+//check for form action
   if($_POST['action'] == 'contact_form_airtable'){
 
     //post vars
@@ -42,47 +43,31 @@ function contactFormAirtable (){
     define("CONFIG_ID", 0);
     define("CONFIG_NAME", "Default");
 
+    //table column header names
     $new_contact_form = array("First Name" => $firstName, "Last Name" => $lastName, "Email" => $email, "Phone Number" => $tel,
                               "Address" => $address, "City" => $city, "State" => $state, "Zip" => $zip,
                               "Comments" => $comments);
 
+    //airpress record array
     $contact_form_data = AirpressConnect::create(CONFIG_ID, "Contact Submits", $new_contact_form);
-
+    //airpress prepare query
     $query = new AirpressQuery("Contact Submits", CONFIG_ID);
+    //call query and set records from new contact form data
     $collection = new AirpressCollection($query, false);
     $collection->setRecords(array($contact_form_data));
 
-    $contact_form_record = $collection[0];
+    //airpress record data inserted
+    $contact_form_record = $collection;
 
-    $contact_form_id = $contact_form_recrod->record_id();
+    //Record is success if we get data returned. 
+    if($contact_form_record <> NULL){
+        $results = array("status"=>"success", "contactFormId"=>$contact_form_record);
+    }else{
+        $results = array("status"=>"error");
+    }
 
-    if($contact_form_id > 0){
-      //email airtable users to notify record has been created
-      $subject = 'Contact Form: '.$reason.' - '.$_POST['name'];
-      $headers = 'From: My Blog Contact Form <contact@me.com>';
-      $send_to = "airtableContact@airtabletest.com";
-      $subject = "Airtable Record Created Contact Form";
-      $message = "A record has been created in the Contact Form Submits Tables for Airtable";
-
-      //send email to notify airtable users
-      try {
-        if (wp_mail($send_to, $subject, $message, $headers)) {
-          echo json_encode(array('status' => 'success', 'message' => 'Contact message sent.'));
-          exit;
-        } else {
-          throw new Exception('Failed to send email.');
-        }
-      } catch (Exception $e) {
-        echo json_encode(array('status' => 'error', 'message' => $e->getMessage()));
-        exit;
-      }
-
-      //send results back to JS
-      $results = array("status"=>"success", "contactFormId"=>$contact_form_id);
-
-      //return results from post
-      echo json_encode($results);
-    } // end if record
+    //return results from post
+    echo json_encode($results);
 
   } // end if post
 

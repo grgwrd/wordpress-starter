@@ -30,53 +30,48 @@ get_header(); ?>
 			// End of the loop.
 		endwhile;
 
-		//record_id for Airtable record from Contact Form Submission
-	  $airtableRecordId = $_GET['record_id'];
-
-		$query = new AirpressQuery();
-		$query->setConfig("default");
-		$query->table("Contact Submits")->view("Contact Submits");
-		$contacts = new AirpressCollection($query);
-
-		$recordId = $contacts[0]->record_id();
-		if($recordId == $airtableRecordId){
-			//create record vars
-			$firstName = $contacts[0]["First Name"]."<br>";
-			$lastName = $contacts[0]["Last Name"]."<br>";
-			$email = $contacts[0]["Email"]."<br>";
-			$tel = $contacts[0]["Phone Number"]."<br>";
-			$address = $contacts[0]["Address"]."<br>";
-			$city = $contacts[0]["City"]."<br>";
-			$state = $contacts[0]["State"]."<br>";
-			$zip = $contacts[0]["Zip"]."<br>";
-			$comments = $contacts[0]["Comments"]."<br>";
-
+			$firstName = $_GET['firstName'];
+			$lastName = $_GET['lastName'];
+			$tel = $_GET['tel'];
+			$email = $_GET['email'];
+			$address = $_GET['address'];
+			$city = $_GET['city'];
+			$state = $_GET['state'];
+			$zip = $_GET['zip'];
+			$comments = $_GET['comments'];
+			
 			?>
 			<div>
 				<p id="contact-form">
+					<p>
 					<label>First Name:</label>
-					<span> <?php echo $firstName; ?> </span>
+					<strong> <?php echo $firstName; ?> </strong></p>
+					<p>
 					<label>Last Name:</label>
-					<span> <?php echo $lastName; ?>
+					<strong> <?php echo $lastName; ?></strong>
+					<p>
 					<label>Email Address:</label>
-					<span> <?php echo $email; ?> </span>
+					<strong> <?php echo $email; ?> </strong></p>
+						<p>
 					<label>Phone Number:</label>
-					<span> <?php echo $tel; ?> </span>
+					<strong> <?php echo $tel; ?> </strong></p>
+						<p>
 					<label>Street Address:</label>
-					<span> <?php echo $address; ?> </span>
+					<strong> <?php echo $address; ?> </strong></p>
+						<p>
 					<label>City:</label>
-					<span> <?php echo $city; ?> </span>
+					<strong> <?php echo $city; ?> </strong></p>
+						<p>
 					<label>State:</label>
-					<span> <?php echo $state; ?> </span>
+					<strong> <?php echo $state; ?> </strong></p>
+						<p>
 					<label>Zip Code:</label>
-					<span> <?php echo $zip; ?> </span>
+					<strong> <?php echo $zip; ?> </strong></p>
+						<p>
 					<label>Comments:</label>
-					<span> <?php echo $comments; ?> </span>
+					<strong> <?php echo $comments; ?> </strong></p>
 				</p>
-
 			</div>
-		<?php } //end if airtable contact form ?>
-
 	</main><!-- .site-main -->
 
 	<?php get_sidebar( 'content-bottom' ); ?>

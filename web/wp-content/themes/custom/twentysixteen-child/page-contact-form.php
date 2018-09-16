@@ -126,7 +126,7 @@ get_header(); ?>
 				<input type="zip" name="zip" placeholder="Your zip code" />
 				<label>Comments:</label>
 			  <textarea name="comments" placeholder="Your comments"></textarea>
-			  <input type="submit" value="Send Contact" />
+			  <input type="submit" name="submit" value="Send Contact" />
 			</form>
 		</div>
 

@@ -18,7 +18,6 @@ services:
      image: wordpress:latest
      volumes:
        - ./web/wp-content:/var/www/html/wp-content
-       - ./web/wp-admin:/var/www/html/wp-admin
      ports:
        - "8000:80"
      restart: always
