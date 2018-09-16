@@ -1,0 +1,17 @@
+/.idea
+/vendor
+
+/web/wp-admin/*
+/web/wp-includes/*
+
+/web/wp-content/themes/twentyfifteen
+/web/wp-content/themes/twentyseventeen
+
+/web/*.php
+/web/*.html
+/web/*.txt
+!web/wp-content/themes/custom/twentysixteen-child/
+
+
+*.DS_Store
+
