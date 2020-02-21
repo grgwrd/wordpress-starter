@@ -35,7 +35,7 @@
       "web/wp-config.php",
       "web/wp-content/uploads",
       "web/wp-content/themes/custom",
-      "web/wp-content/plugins/airtable"
+      "web/wp-content/plugins/airpress"
     ],
     "wordpress-install-dir": "web"
   }
